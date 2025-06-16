@@ -35,12 +35,11 @@ placeOrder("water")
 placeOrder("Veggie Wrap")
 placeOrder("uzito")
 const completeOrder =(orderId)=>{
-orderQueue.forEach((order)=>{
-    if(order.id === orderId){
+const order = orderQueue.find((order)=>
+    order.id === orderId
+)
+console.log(order)
 order.status = "complete"
-    }
-    
-})
 }
 completeOrder(1)
 console.log(orderQueue)
