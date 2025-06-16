@@ -14,3 +14,19 @@ const menu = [
 const cashInRegister = 1000;
 
 const orderQueue = [];
+
+const addNewItem = (name,price)=> {
+    menu.push({"name":name,"price":price})
+}
+addNewItem("water",4.50)
+addNewItem("uzito",45.50)
+
+// console.log(menu)
+
+const placeOrder =(name)=>{
+const orderedItem = menu.find((item)=>item.name === name)
+console.log(orderedItem)
+orderQueue.push(orderedItem)
+}
+placeOrder("water")
+console.log(orderQueue)
