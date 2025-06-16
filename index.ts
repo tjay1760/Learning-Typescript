@@ -2,7 +2,12 @@ type Food ={
     name: string
     price: number
 }
-const menu = [
+type OrderType = {
+id:number
+order: Food
+status: string
+}
+const menu:Food[] = [
     { name: "Margherita Pizza", price: 8.99 },
     { name: "Cheeseburger", price: 10.49 },
     { name: "Caesar Salad", price: 7.25 },
@@ -17,7 +22,7 @@ const menu = [
 
 let cashInRegister = 1000;
 let CurrentID = 1;
-const orderQueue = [];
+const orderQueue:OrderType[] = [];
 
 const addNewItem = (foodObj:Food)=> {
     menu.push(foodObj)
@@ -31,6 +36,7 @@ const placeOrder =(name:string)=>{
 const orderedItem = menu.find((item)=>item.name === name)
 if(!orderedItem){
 console.log("not found")
+return
 }
 cashInRegister+= orderedItem.price
 const newOrder = {id:CurrentID,order:orderedItem, status:"ordered"}
@@ -38,14 +44,18 @@ orderQueue.push(newOrder)
 CurrentID++
 return newOrder
 }
-placeOrder("water")
+placeOrder("water") 
 placeOrder("Veggie Wrap")
 placeOrder("uzito")
 const completeOrder =(orderId:number)=>{
 const order = orderQueue.find((order)=>
     order.id === orderId
 )
-console.log(order)
+if(!order){
+console.log("order not found")
+return
+}
+
 order.status = "complete"
 }
 completeOrder(1)
