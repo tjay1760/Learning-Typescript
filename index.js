@@ -34,7 +34,13 @@ return newOrder
 placeOrder("water")
 placeOrder("Veggie Wrap")
 placeOrder("uzito")
-const completeOrder =()=>{
-
+const completeOrder =(orderId)=>{
+orderQueue.forEach((order)=>{
+    if(order.id === orderId){
+order.status = "complete"
+    }
+    
+})
 }
+completeOrder(1)
 console.log(orderQueue)
