@@ -11,8 +11,8 @@ const menu = [
     { name: "Chocolate Lava Cake", price: 6.75 }
 ];
 
-const cashInRegister = 1000;
-
+let cashInRegister = 1000;
+let CurrentID = 1;
 const orderQueue = [];
 
 const addNewItem = (name,price)=> {
@@ -25,8 +25,16 @@ addNewItem("uzito",45.50)
 
 const placeOrder =(name)=>{
 const orderedItem = menu.find((item)=>item.name === name)
-console.log(orderedItem)
-orderQueue.push(orderedItem)
+cashInRegister+= orderedItem.price
+const newOrder = {id:CurrentID,order:orderedItem, status:"ordered"}
+orderQueue.push(newOrder)
+CurrentID++
+return newOrder
 }
 placeOrder("water")
+placeOrder("Veggie Wrap")
+placeOrder("uzito")
+const completeOrder =()=>{
+
+}
 console.log(orderQueue)
