@@ -16,10 +16,11 @@ const menu = [
     { id: nextFoodId++, name: "Chocolate Lava Cake", price: 6.75 }
 ];
 const addNewItem = (foodObj) => {
+    foodObj.id = nextFoodId++;
     menu.push(foodObj);
 };
-addNewItem({ id: nextFoodId++, name: "water", price: 4.50 });
-addNewItem({ id: nextFoodId++, name: "uzito", price: 45.50 });
+addNewItem({ name: "water", price: 4.50 });
+addNewItem({ name: "uzito", price: 45.50 });
 // console.log(menu)
 const placeOrder = (name) => {
     const orderedItem = menu.find((item) => item.name === name);
