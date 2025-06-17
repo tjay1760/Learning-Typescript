@@ -1,24 +1,25 @@
 "use strict";
-const menu = [
-    { name: "Margherita Pizza", price: 8.99 },
-    { name: "Cheeseburger", price: 10.49 },
-    { name: "Caesar Salad", price: 7.25 },
-    { name: "Spaghetti Bolognese", price: 11.50 },
-    { name: "Grilled Chicken Sandwich", price: 9.75 },
-    { name: "Fish and Chips", price: 12.00 },
-    { name: "Veggie Wrap", price: 8.50 },
-    { name: "Steak Frites", price: 15.99 },
-    { name: "Chicken Tikka Masala", price: 13.25 },
-    { name: "Chocolate Lava Cake", price: 6.75 }
-];
 let cashInRegister = 1000;
 let CurrentID = 1;
+let nextFoodId = 1;
 const orderQueue = [];
+const menu = [
+    { id: nextFoodId++, name: "Margherita Pizza", price: 8.99 },
+    { id: nextFoodId++, name: "Cheeseburger", price: 10.49 },
+    { id: nextFoodId++, name: "Caesar Salad", price: 7.25 },
+    { id: nextFoodId++, name: "Spaghetti Bolognese", price: 11.50 },
+    { id: nextFoodId++, name: "Grilled Chicken Sandwich", price: 9.75 },
+    { id: nextFoodId++, name: "Fish and Chips", price: 12.00 },
+    { id: nextFoodId++, name: "Veggie Wrap", price: 8.50 },
+    { id: nextFoodId++, name: "Steak Frites", price: 15.99 },
+    { id: nextFoodId++, name: "Chicken Tikka Masala", price: 13.25 },
+    { id: nextFoodId++, name: "Chocolate Lava Cake", price: 6.75 }
+];
 const addNewItem = (foodObj) => {
     menu.push(foodObj);
 };
-addNewItem({ name: "water", price: 4.50 });
-addNewItem({ name: "uzito", price: 45.50 });
+addNewItem({ id: nextFoodId++, name: "water", price: 4.50 });
+addNewItem({ id: nextFoodId++, name: "uzito", price: 45.50 });
 // console.log(menu)
 const placeOrder = (name) => {
     const orderedItem = menu.find((item) => item.name === name);
@@ -41,7 +42,17 @@ const completeOrder = (orderId) => {
         console.log("order not found");
         return;
     }
-    order.status = "complete";
+    order.status = "completed";
+};
+const getPizzaDetail = (identifier) => {
+    const foodDetail = menu.find((item) => item.id === identifier || item.name === identifier);
+    if (!foodDetail) {
+        return;
+    }
+    return foodDetail;
 };
 completeOrder(1);
+// getPizzaDetail(3)
+getPizzaDetail("water");
 console.log(orderQueue);
+console.log(menu);
