@@ -17,3 +17,4 @@ userRouter.put("/:id",(req,res)=>{
 userRouter.delete("/:id",(req,res)=>{
     res.send({title:"DELETE a user"})
 })
+export default userRouter;
