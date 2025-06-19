@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { signIn } from "../controllers/auth.controller";
-import { signOut } from "../controllers/auth.controller";
-import { signUp } from "../controllers/auth.controller";
-const authRouter = Router();
+import { signIn,signUp,signOut } from "../controllers/auth.controller.js";
 
-authRouter.post("sign-up",signUp)
-authRouter.post("sign-in",signIn)
-authRouter.post("sign-out",signOut)
+const authRouter = Router();
+const testApi =(req,res)=>{
+    res.send({status:"achieved"})
+}
+authRouter.post("/sign-up", signUp);
+authRouter.post("/sign-in", signIn);
+authRouter.post("/sign-out", signOut);
 export default authRouter;
